@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Frontend Mentor | E-commerce product page</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <!-- The navigation bar-->
+  <header>
+    <div id="logo" class="logo">
+      <img id="sneakers-logo" class="sneakers-logo" src="images/logo.svg" alt="">
+    </div>
+    <div id="nav-list" class="nav-list">
+      <ul>
+        <li>Collections</li>
+        <li>Men</li>
+        <li>Women</li>
+        <li>About</li>
+        <li>Contact</li>
+      </ul>
+    </div>
+    <div id="cart" class="cart" >
+      <button id="cart-button" class="cart-button" onclick="displayCart()">
+        <img src="images/icon-cart.svg" alt="">
+        <span id="count-in-cart">0</span>
+      </button>
+      
+      
+      <div id="emptycartDetails" class="emptycartDetails">
+        <div id="cartTittle" class="cartTittle">
+          <h3>Cart</h3>
+        </div>
+        <div id="emptycartBody" class="emptycartBody">
+          <p id="cartStatus">Your cart is empty.</p>
+        </div>  
+      </div>
+
+      <div id="fullcartDetails" class="fullcartDetails">
+        <div id="cartTittle" class="cartTittle">
+          <h3>Cart</h3>
+        </div>
+        <div id="cartBody" class="cartBody">
+          <div class="cartthumbnail">
+            <img src="images/image-product-1-thumbnail.jpg" alt="">
+          </div>
+          <div class="productDetails">
+            <span id="cart-product" class="cartproduct">Fall Limited Edition Sneakers</span>
+            <span id="unit-price" class="unitPrice">$125.00 x</span>
+            <span id="qnt" class="quantity">1</span>
+            <span id="total-price" class="totalPrice">$125.00</span>
+          </div>
+        <button id="deleteButton" onclick="deleteItem()"> <img src="images/icon-delete.svg" alt=""></button>        </div>
+        <button id="checkoutButton">Checkout</button>    
+      </div>
+
+      
+    </div>
+    
+    <div id="account-avatar" class="account-avatar">
+      <img src="images/image-avatar.png" alt="">
+    </div>
+  </header>
+
+  <!-- The main part-->
+  <main id="product-container" class="product-container">
+    <div id="product-pictures" class="product-pictures">
+      <div id="larg" class="larg">
+        <img id="larg-pic" class="larg-pic" src="images/image-product-1.jpg" alt="" onclick="openLightBox()">
+      </div>
+      <div id="small" class="small">
+        <img id="thumbnail" class="thumbnail" src="images/image-product-1-thumbnail.jpg" alt="" onclick="displayImage('images/image-product-1.jpg')">
+        <img id="thumbnail" class="thumbnail" src="images/image-product-2-thumbnail.jpg" alt="" onclick="displayImage('images/image-product-2.jpg')">
+        <img id="thumbnail" class="thumbnail" src="images/image-product-3-thumbnail.jpg" alt="" onclick="displayImage('images/image-product-3.jpg')">
+        <img id="thumbnail" class="thumbnail" src="images/image-product-4-thumbnail.jpg" alt="" onclick="displayImage('images/image-product-4.jpg')">
+      </div>
+    </div>
+    <div id="product-infos" class="product-infos">
+      <h5>Sneaker Company</h5>
+      <h1>Fall Limited Edition Sneakers</h1>
+      <p id="description" class="description">These low-profile sneakers are your perfect casual wear companion. Featuring a 
+        durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+      <p id="price" class="price">
+      <h2 id="new-price" class="new-price">$125.00<span id="discount" class="discount">50%</span></h2>  
+      <h3 id="old-price" class="old-price">$250.00</h3>
+      </p>
+      <div id="cart-btn" class="cart-btn">
+        <div id="counter" class="counter">
+          <button id="minus" onclick="changeCount(-1)">
+            <img src="images/icon-minus.svg" alt="" >
+          </button>
+          <span id="count">0</span>
+          <button id="plus" onclick="changeCount(1)">
+            <img src="images/icon-plus.svg" alt=""  >
+          </button>
+        </div>
+        <div id="addToCart-btn" class="addToCart-btn">
+          <button id="addToCart" class="addToCart" onclick="addToCart()"> 
+          <img id="cart-icon" class="cart-icon" src="images/icon-cart.svg" alt="">Add to cart</button>  
+        </div>  
+      </div>  
+    </div>
+  </main>
+
+  <div id= "lightbox">
+    <div class="lightBig">
+      <img id="lightBig" src="images/image-product-1.jpg" alt="ProductImage">
+    </div>
+    <div class="exitBotton">
+      <img id="exitBotton" src="images/icon-close.svg" alt="" onclick="closeLightBox()">   
+    </div>    
+    <div id="lightSmall" class="lightSmall">
+      <img id="lightthumbnail" class="thumbnail" src="images/image-product-1-thumbnail.jpg" alt="" onclick="displayLightBig('images/image-product-1.jpg')">
+      <img id="lightthumbnail" class="thumbnail" src="images/image-product-2-thumbnail.jpg" alt="" onclick="displayLightBig('images/image-product-2.jpg')">
+      <img id="lightthumbnail" class="thumbnail" src="images/image-product-3-thumbnail.jpg" alt="" onclick="displayLightBig('images/image-product-3.jpg')">
+      <img id="lightthumbnail" class="thumbnail" src="images/image-product-4-thumbnail.jpg" alt="" onclick="displayLightBig('images/image-product-4.jpg')">
+    </div>
+    <div class="nextImg">
+      <button id="next"> <img src="images/icon-next.svg" onclick="imageSliderNext()"> </button>
+    </div>
+    <div class="previousImg">
+      <button id="previous"> <img src="images/icon-previous.svg" onclick="imageSliderPrev()"> </button>
+    </div>
+  </div>
+
+
+
+
+
+  <script src="app.js"> </script> 
+
+
+  
+
+  
+
+  
+
+  
+
+  
+ <!-- Footer-->
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Marouane Harb</a>.
+  </div>
+</body>
+</html>
